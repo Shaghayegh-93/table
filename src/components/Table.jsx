@@ -8,7 +8,6 @@ const Table = () => {
   const [error, setError] = useState(null);
   const [sortOrder, setSortOrder] = useState("asc");
   const [searchItem, setSearchItem] = useState("");
-  console.log(searchItem);
   useEffect(() => {
     axios
       .get("https://jsonplaceholder.typicode.com/users")
@@ -46,13 +45,13 @@ const Table = () => {
     // setSearchItem("");
   };
   return (
-    <div className="flex items-center justify-center mt-10 max-w-full mx-10">
+    <div className="flex items-center justify-center my-4 max-w-full mx-10 overflow-x-scroll ">
       {loading ? (
         <p>loading...</p>
       ) : error ? (
         <p>{error.message}</p>
       ) : data.length > 0 ? (
-        <table className=" divide-y divide-gray-200 border min-w-full ">
+        <table className=" divide-y divide-gray-200 border min-w-full  ">
           <tr className="border ">
             <th
               scope="col"
@@ -85,23 +84,7 @@ const Table = () => {
               email
             </th>
           </tr>
-          {/* <tr className="border ">
-            <form onSubmit={searchHandler} className="mb-4">
-              <input
-                type="text"
-                value={searchItem}
-                onChange={(e) => setSearchItem(e.target.value)}
-                placeholder="Search by name, username, or email"
-                className="border border-gray-300 rounded-md px-3 py-2 mr-2"
-              />
-              <button
-                type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded-md"
-              >
-                Search
-              </button>
-            </form>
-          </tr> */}
+       
           <tr className="border">
             <th colSpan={3} className="px-6 py-3">
               <form onSubmit={searchHandler}>
